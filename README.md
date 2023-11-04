@@ -1,4 +1,4 @@
-## @managespace/ms-org-service-angular-sdk@0.0.1
+## @managespace/ms-org-service-angular-sdk@0.0.11-dev.0
 
 ### Building
 
@@ -19,7 +19,7 @@ Navigate to the folder of your consuming project and run one of next commands.
 _published:_
 
 ```
-npm install @managespace/ms-org-service-angular-sdk@0.0.1 --save
+npm install @managespace/ms-org-service-angular-sdk@0.0.11-dev.0 --save
 ```
 
 _without publishing (not recommended):_

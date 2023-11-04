@@ -1,6 +1,6 @@
 {
   "name": "@managespace/ms-org-service-angular-sdk",
-  "version": "0.0.1",
+  "version": "0.0.11-dev.0",
   "description": "OpenAPI client for @managespace/ms-org-service-angular-sdk",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
