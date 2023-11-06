@@ -11,7 +11,7 @@
  */
 import { Condition } from './condition';
 import { UnitFeature } from './unitFeature';
-import { UnitPosition } from './unitPosition';
+import { Position } from './position';
 
 
 export interface UnitResponse { 
@@ -107,7 +107,7 @@ export interface UnitResponse {
      * Unit Features
      */
     unitFeatures: Array<UnitFeature>;
-    position: UnitPosition;
+    position: Position;
     /**
      * Created at.
      */

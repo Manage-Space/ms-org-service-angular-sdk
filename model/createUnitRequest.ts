@@ -11,7 +11,7 @@
  */
 import { Condition } from './condition';
 import { UnitFeature } from './unitFeature';
-import { UnitPosition } from './unitPosition';
+import { Position } from './position';
 
 
 export interface CreateUnitRequest { 
@@ -79,7 +79,7 @@ export interface CreateUnitRequest {
      * Notes
      */
     notes: string | null;
-    position: UnitPosition;
+    position: Position;
     /**
      * Unit Features
      */

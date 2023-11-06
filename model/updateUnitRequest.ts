@@ -11,7 +11,7 @@
  */
 import { Condition } from './condition';
 import { UnitFeature } from './unitFeature';
-import { UnitPosition } from './unitPosition';
+import { Position } from './position';
 
 
 export interface UpdateUnitRequest { 
@@ -75,7 +75,7 @@ export interface UpdateUnitRequest {
      * Notes
      */
     notes: string | null;
-    position: UnitPosition;
+    position: Position;
     /**
      * Unit Features
      */
