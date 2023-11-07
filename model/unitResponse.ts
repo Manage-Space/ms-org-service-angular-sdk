@@ -116,5 +116,9 @@ export interface UnitResponse {
      * Updated at.
      */
     updatedAt: string | null;
+    /**
+     * Paid through date.
+     */
+    paidThrough: string | null;
 }
 
