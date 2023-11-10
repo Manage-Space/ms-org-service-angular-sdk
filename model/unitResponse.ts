@@ -120,5 +120,18 @@ export interface UnitResponse {
      * Paid through date.
      */
     paidThrough: string | null;
+    /**
+     * Payment ststus
+     */
+    paymentStatus: UnitResponse.PaymentStatusEnum | null;
 }
+export namespace UnitResponse {
+    export type PaymentStatusEnum = 'paid' | 'unpaid' | 'overdue';
+    export const PaymentStatusEnum = {
+        Paid: 'paid' as PaymentStatusEnum,
+        Unpaid: 'unpaid' as PaymentStatusEnum,
+        Overdue: 'overdue' as PaymentStatusEnum
+    };
+}
+
 
