@@ -10,6 +10,8 @@
  * Do not edit the class manually.
  */
 import { SiteAmenity } from './siteAmenity';
+import { SiteUserRequest } from './siteUserRequest';
+import { GenericAddressRequestDto } from './genericAddressRequestDto';
 import { SiteType } from './siteType';
 
 
@@ -30,5 +32,18 @@ export interface UpdateSiteRequest {
      * Amenity Ids
      */
     siteAmenities?: Array<SiteAmenity>;
+    address?: GenericAddressRequestDto;
+    /**
+     * Amenity Ids
+     */
+    siteUsers?: Array<SiteUserRequest>;
+    /**
+     * Phone number
+     */
+    phoneNumber?: string;
+    /**
+     * Email address
+     */
+    email?: string;
 }
 

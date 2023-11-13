@@ -29,6 +29,7 @@ model/createUnitsRequest.ts
 model/dataTypes.ts
 model/forbiddenError403Response.ts
 model/forbiddenError403ResponseError.ts
+model/genericAddressRequestDto.ts
 model/getCondition200Response.ts
 model/getMapFeatures200Response.ts
 model/getOrgFeatures200Response.ts
@@ -51,6 +52,7 @@ model/settingResponseValue.ts
 model/siteAmenity.ts
 model/siteResponse.ts
 model/siteType.ts
+model/siteUserRequest.ts
 model/standardMapFeatureTypeDto.ts
 model/taxRateResponse.ts
 model/unauthorizedError401Response.ts
