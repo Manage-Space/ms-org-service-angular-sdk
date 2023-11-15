@@ -19,7 +19,7 @@ export interface OrgSiteAmenityResponse {
     /**
      * Amenity name
      */
-    name: string;
+    amenityName: string;
     /**
      * Amenity description
      */

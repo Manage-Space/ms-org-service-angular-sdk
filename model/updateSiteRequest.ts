@@ -34,7 +34,7 @@ export interface UpdateSiteRequest {
     siteAmenities?: Array<SiteAmenity>;
     address?: GenericAddressRequestDto;
     /**
-     * Amenity Ids
+     * Site user(s)
      */
     siteUsers?: Array<SiteUserRequest>;
     /**

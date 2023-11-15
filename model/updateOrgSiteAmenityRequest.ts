@@ -15,7 +15,7 @@ export interface UpdateOrgSiteAmenityRequest {
     /**
      * Amenity name
      */
-    name: string;
+    amenityName: string;
     /**
      * Amenity description
      */
