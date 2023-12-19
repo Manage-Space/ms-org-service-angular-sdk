@@ -9,11 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { OrgSettingResponse } from './orgSettingResponse';
+import { SettingResponse } from './settingResponse';
 
 
 export interface GetOrgSettings200Response { 
-    data?: Array<OrgSettingResponse>;
+    data?: Array<SettingResponse>;
     success?: boolean;
     error?: object;
 }

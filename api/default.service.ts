@@ -25,8 +25,6 @@ import { CreateOrgGlobalAdmin200Response } from '../model/createOrgGlobalAdmin20
 // @ts-ignore
 import { CreateOrgRequest } from '../model/createOrgRequest';
 // @ts-ignore
-import { CreateOrgSettingRequest } from '../model/createOrgSettingRequest';
-// @ts-ignore
 import { CreateOrgSiteAmenity200Response } from '../model/createOrgSiteAmenity200Response';
 // @ts-ignore
 import { CreateOrgSiteAmenityRequest } from '../model/createOrgSiteAmenityRequest';
@@ -59,8 +57,6 @@ import { GetOrgSettings200Response } from '../model/getOrgSettings200Response';
 // @ts-ignore
 import { GetPricingGroupsBySite200Response } from '../model/getPricingGroupsBySite200Response';
 // @ts-ignore
-import { GetSettingsBySite200Response } from '../model/getSettingsBySite200Response';
-// @ts-ignore
 import { GetSites200Response } from '../model/getSites200Response';
 // @ts-ignore
 import { GetTaxRateBySite200Response } from '../model/getTaxRateBySite200Response';
@@ -68,8 +64,6 @@ import { GetTaxRateBySite200Response } from '../model/getTaxRateBySite200Respons
 import { InternalServerError500Response } from '../model/internalServerError500Response';
 // @ts-ignore
 import { UnauthorizedError401Response } from '../model/unauthorizedError401Response';
-// @ts-ignore
-import { UpdateOrgSettingRequest } from '../model/updateOrgSettingRequest';
 // @ts-ignore
 import { UpdateOrgSiteAmenityRequest } from '../model/updateOrgSiteAmenityRequest';
 // @ts-ignore
@@ -319,9 +313,9 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createOrgSetting(orgId: string, createSettingRequest: CreateSettingRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetSettingsBySite200Response>;
-    public createOrgSetting(orgId: string, createSettingRequest: CreateSettingRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetSettingsBySite200Response>>;
-    public createOrgSetting(orgId: string, createSettingRequest: CreateSettingRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetSettingsBySite200Response>>;
+    public createOrgSetting(orgId: string, createSettingRequest: CreateSettingRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetOrgSettings200Response>;
+    public createOrgSetting(orgId: string, createSettingRequest: CreateSettingRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetOrgSettings200Response>>;
+    public createOrgSetting(orgId: string, createSettingRequest: CreateSettingRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetOrgSettings200Response>>;
     public createOrgSetting(orgId: string, createSettingRequest: CreateSettingRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling createOrgSetting.');
@@ -378,90 +372,10 @@ export class DefaultService {
         }
 
         let localVarPath = `/org/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/settings`;
-        return this.httpClient.request<GetSettingsBySite200Response>('post', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                body: createSettingRequest,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Create org settings.
-     * Creates organization settings
-     * @param orgId Organization ID you\&#39;re updating.
-     * @param createOrgSettingRequest 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public createOrgSettings(orgId: string, createOrgSettingRequest: CreateOrgSettingRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetOrgSettings200Response>;
-    public createOrgSettings(orgId: string, createOrgSettingRequest: CreateOrgSettingRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetOrgSettings200Response>>;
-    public createOrgSettings(orgId: string, createOrgSettingRequest: CreateOrgSettingRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetOrgSettings200Response>>;
-    public createOrgSettings(orgId: string, createOrgSettingRequest: CreateOrgSettingRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
-        if (orgId === null || orgId === undefined) {
-            throw new Error('Required parameter orgId was null or undefined when calling createOrgSettings.');
-        }
-        if (createOrgSettingRequest === null || createOrgSettingRequest === undefined) {
-            throw new Error('Required parameter createOrgSettingRequest was null or undefined when calling createOrgSettings.');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarCredential: string | undefined;
-        // authentication (bearer) required
-        localVarCredential = this.configuration.lookupCredential('bearer');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json;v=1'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-        }
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/org/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/org-settings`;
         return this.httpClient.request<GetOrgSettings200Response>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: createOrgSettingRequest,
+                body: createSettingRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -804,9 +718,9 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createSiteSetting(orgId: string, siteId: string, createSettingRequest: CreateSettingRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetSettingsBySite200Response>;
-    public createSiteSetting(orgId: string, siteId: string, createSettingRequest: CreateSettingRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetSettingsBySite200Response>>;
-    public createSiteSetting(orgId: string, siteId: string, createSettingRequest: CreateSettingRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetSettingsBySite200Response>>;
+    public createSiteSetting(orgId: string, siteId: string, createSettingRequest: CreateSettingRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetOrgSettings200Response>;
+    public createSiteSetting(orgId: string, siteId: string, createSettingRequest: CreateSettingRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetOrgSettings200Response>>;
+    public createSiteSetting(orgId: string, siteId: string, createSettingRequest: CreateSettingRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetOrgSettings200Response>>;
     public createSiteSetting(orgId: string, siteId: string, createSettingRequest: CreateSettingRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling createSiteSetting.');
@@ -866,7 +780,7 @@ export class DefaultService {
         }
 
         let localVarPath = `/org/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/settings`;
-        return this.httpClient.request<GetSettingsBySite200Response>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<GetOrgSettings200Response>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: createSettingRequest,
@@ -1482,9 +1396,9 @@ export class DefaultService {
     }
 
     /**
-     * Find an org\&#39;s settings.
-     * Retrieves an organization\&#39;s settings.
-     * @param orgId Organization ID you\&#39;re updating.
+     * Retrieve org settings.
+     * Retrieve org level setting.
+     * @param orgId Organization ID
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -1534,7 +1448,7 @@ export class DefaultService {
             }
         }
 
-        let localVarPath = `/org/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/org-settings`;
+        let localVarPath = `/org/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/settings`;
         return this.httpClient.request<GetOrgSettings200Response>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -1843,9 +1757,9 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getSettingsBySite(orgId: string, siteId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetSettingsBySite200Response>;
-    public getSettingsBySite(orgId: string, siteId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetSettingsBySite200Response>>;
-    public getSettingsBySite(orgId: string, siteId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetSettingsBySite200Response>>;
+    public getSettingsBySite(orgId: string, siteId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetOrgSettings200Response>;
+    public getSettingsBySite(orgId: string, siteId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetOrgSettings200Response>>;
+    public getSettingsBySite(orgId: string, siteId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetOrgSettings200Response>>;
     public getSettingsBySite(orgId: string, siteId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling getSettingsBySite.');
@@ -1893,7 +1807,7 @@ export class DefaultService {
         }
 
         let localVarPath = `/org/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/settings`;
-        return this.httpClient.request<GetSettingsBySite200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<GetOrgSettings200Response>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -2517,9 +2431,9 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateOrgSetting(orgId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetSettingsBySite200Response>;
-    public updateOrgSetting(orgId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetSettingsBySite200Response>>;
-    public updateOrgSetting(orgId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetSettingsBySite200Response>>;
+    public updateOrgSetting(orgId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetOrgSettings200Response>;
+    public updateOrgSetting(orgId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetOrgSettings200Response>>;
+    public updateOrgSetting(orgId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetOrgSettings200Response>>;
     public updateOrgSetting(orgId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling updateOrgSetting.');
@@ -2579,90 +2493,10 @@ export class DefaultService {
         }
 
         let localVarPath = `/org/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/settings/${this.configuration.encodeParam({name: "settingId", value: settingId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
-        return this.httpClient.request<GetSettingsBySite200Response>('put', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                body: updateSettingRequest,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Update org settings.
-     * Updates an organization settings.
-     * @param orgId Organization ID you\&#39;re updating.
-     * @param updateOrgSettingRequest 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public updateOrgSettings(orgId: string, updateOrgSettingRequest: UpdateOrgSettingRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetOrgSettings200Response>;
-    public updateOrgSettings(orgId: string, updateOrgSettingRequest: UpdateOrgSettingRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetOrgSettings200Response>>;
-    public updateOrgSettings(orgId: string, updateOrgSettingRequest: UpdateOrgSettingRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetOrgSettings200Response>>;
-    public updateOrgSettings(orgId: string, updateOrgSettingRequest: UpdateOrgSettingRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
-        if (orgId === null || orgId === undefined) {
-            throw new Error('Required parameter orgId was null or undefined when calling updateOrgSettings.');
-        }
-        if (updateOrgSettingRequest === null || updateOrgSettingRequest === undefined) {
-            throw new Error('Required parameter updateOrgSettingRequest was null or undefined when calling updateOrgSettings.');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarCredential: string | undefined;
-        // authentication (bearer) required
-        localVarCredential = this.configuration.lookupCredential('bearer');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json;v=1'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-        }
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/org/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/org-settings`;
         return this.httpClient.request<GetOrgSettings200Response>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: updateOrgSettingRequest,
+                body: updateSettingRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -3022,9 +2856,9 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateSiteSetting(orgId: string, siteId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetSettingsBySite200Response>;
-    public updateSiteSetting(orgId: string, siteId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetSettingsBySite200Response>>;
-    public updateSiteSetting(orgId: string, siteId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetSettingsBySite200Response>>;
+    public updateSiteSetting(orgId: string, siteId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetOrgSettings200Response>;
+    public updateSiteSetting(orgId: string, siteId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetOrgSettings200Response>>;
+    public updateSiteSetting(orgId: string, siteId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetOrgSettings200Response>>;
     public updateSiteSetting(orgId: string, siteId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling updateSiteSetting.');
@@ -3087,7 +2921,7 @@ export class DefaultService {
         }
 
         let localVarPath = `/org/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/settings/${this.configuration.encodeParam({name: "settingId", value: settingId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
-        return this.httpClient.request<GetSettingsBySite200Response>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<GetOrgSettings200Response>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: updateSettingRequest,
