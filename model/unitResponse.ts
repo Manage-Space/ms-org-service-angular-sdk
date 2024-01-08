@@ -124,6 +124,10 @@ export interface UnitResponse {
      * Payment ststus
      */
     paymentStatus: UnitResponse.PaymentStatusEnum | null;
+    /**
+     * Reservation ID
+     */
+    reservationId: object;
 }
 export namespace UnitResponse {
     export type PaymentStatusEnum = 'paid' | 'unpaid' | 'overdue';
