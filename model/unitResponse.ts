@@ -127,11 +127,11 @@ export interface UnitResponse {
     /**
      * Reservation ID
      */
-    reservationId: object | null;
+    reservationId: string | null;
     /**
      * Rental ID
      */
-    rentalId: object | null;
+    rentalId: string | null;
 }
 export namespace UnitResponse {
     export type PaymentStatusEnum = 'paid' | 'unpaid' | 'overdue';
