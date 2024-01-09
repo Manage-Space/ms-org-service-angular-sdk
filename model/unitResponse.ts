@@ -128,6 +128,10 @@ export interface UnitResponse {
      * Reservation ID
      */
     reservationId: object;
+    /**
+     * Rental ID
+     */
+    rentalId: object;
 }
 export namespace UnitResponse {
     export type PaymentStatusEnum = 'paid' | 'unpaid' | 'overdue';
