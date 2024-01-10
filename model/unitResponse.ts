@@ -134,10 +134,13 @@ export interface UnitResponse {
     rentalId: string | null;
 }
 export namespace UnitResponse {
-    export type PaymentStatusEnum = 'paid' | 'unpaid' | 'overdue';
+    export type PaymentStatusEnum = 'due' | 'paid' | 'pending' | 'unpaid' | 'draft' | 'overdue';
     export const PaymentStatusEnum = {
+        Due: 'due' as PaymentStatusEnum,
         Paid: 'paid' as PaymentStatusEnum,
+        Pending: 'pending' as PaymentStatusEnum,
         Unpaid: 'unpaid' as PaymentStatusEnum,
+        Draft: 'draft' as PaymentStatusEnum,
         Overdue: 'overdue' as PaymentStatusEnum
     };
 }
