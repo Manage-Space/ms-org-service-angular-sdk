@@ -44,6 +44,10 @@ export interface SettingResponse {
     description: string;
     dataType: DataTypes;
     value: SettingResponseValue;
+    /**
+     * The value of the setting in string format.
+     */
+    valueEncoded: string;
 }
 export namespace SettingResponse {
 }
