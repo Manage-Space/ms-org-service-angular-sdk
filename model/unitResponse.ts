@@ -121,7 +121,7 @@ export interface UnitResponse {
      */
     paidThrough: string | null;
     /**
-     * Payment ststus
+     * Payment status
      */
     paymentStatus: UnitResponse.PaymentStatusEnum | null;
     /**
